@@ -1,0 +1,133 @@
+.toDoLogo {
+  text-align: center;
+  font-size: 2rem;
+  color: #e38c25;
+}
+.addToDo {
+  display: block;
+}
+.add_todo {
+  padding-left: 3rem;
+  padding-right: 6rem;
+  margin:auto;
+  margin-top: .2rem;
+  border: none;
+  color: #777;
+  width: 60%;
+  height: 3rem;
+  text-align: center;
+  font-size: 1.2em;
+  display: block;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+.completeAllButton {
+  margin:auto;
+  margin-top: .2rem;
+  border:none;
+  background-color: #fff;
+  float: left;
+  width: 1.5rem;
+  height: 3rem;
+  font-size: 1.2em;
+  color: #777;
+  display: inline-block;
+  border-right: solid;
+  border-bottom: solid;
+  border-top: solid;
+  border-width: thin;
+  border-color: #eee;
+}
+
+.customButton {
+  background-color: #c95921;
+  border: none;
+  margin: 0.2rem;
+  color: #ffffff;
+  width: 8rem;
+  height: 3rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.2rem;
+  float: left;
+  border-color: #eee;
+  border: solid;
+  border-width: thin;
+}
+.closeCompletedButton {
+  background-color: #b53326;
+  border: none;
+  margin: 0.2rem;
+  color: #ffffff;
+  width: 8rem;
+  height: 3rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.2rem;
+
+}
+.todos {
+  border: none;
+  margin: auto;
+  color: #2e2e2e;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  font-size: 1rem;
+  height: auto;
+}
+
+.todo {
+  overflow: auto;
+  border: none;
+  background-color: #ffffff;
+  margin: auto;
+  margin-top: .2rem;
+  width: 90%;
+  height: auto;
+  font-size: 1em;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+.statusButton {
+  border:none;
+  background-color: #13b419;
+  float: left;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1em;
+  color: #fff;
+}
+
+.closeButton {
+  border:none;
+  background-color: #b53326;
+  float: right;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1em;
+  color: #ffffff;
+}
+.todo_text {
+  float: left;
+  text-align: justify;
+  overflow: hidden;
+}
+.todos_count {
+  border: none;
+  float:left;
+  margin: .2rem;
+  width: 15rem;
+  height: 5vh;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+.App {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 60vw;
+  min-width: 18rem;
+  margin-left: 20vw;
+  margin-top: 5vh;
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
