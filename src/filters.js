@@ -4,23 +4,15 @@ filters['ALL'] = function(data) {
 };
 
 filters['CHECKED'] = function(data) {
-  var temp = [];
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].isActive) {
-      temp.push(data[i]);
-    }
-  }
-  return temp;
+  return data.filter(function(value) {
+    return value.isActive;
+  }, this);
 };
 
 filters['UNCHECKED'] = function(data) {
-  var temp = [];
-  for (var i = 0; i < data.length; i++) {
-    if (!data[i].isActive) {
-      temp.push(data[i]);
-    }
-  }
-  return temp;
+  return data.filter(function(value) {
+    return !value.isActive;
+  }, this);
 };
 
-export { filters};
+export { filters };

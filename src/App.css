@@ -59,7 +59,7 @@
   text-align: center;
   display: inline-block;
   font-size: 1.2rem;
-
+  outline: 0;
 }
 .todos {
   border: none;
