@@ -23,7 +23,7 @@ class Add extends Component {
         <button
           className='completeAllButton'
           onClick={this.completeAllToDos.bind(this)}
-        >x
+        >˅
         </button>
         <input
           className='add_todo'
@@ -52,13 +52,13 @@ class Todo extends Component {
         <button
           className='statusButton'
           onClick={this.changeStatus.bind(this)}
-        >{this.props.data.isActive ? '' : 'D!'}
+        >{this.props.data.isActive ? '' : '✔'}
         </button>
         <div className="todo_text">{this.props.data.text}</div>
         <button
           className='closeButton'
           onClick={this.deleteToDo.bind(this)}
-        >Close
+        >×
         </button>
       </div>
     );
