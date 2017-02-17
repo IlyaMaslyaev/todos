@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { filters } from './filters';
 import { buttons } from './buttons';
+import { updateTodosInLocalStorage, getTodosFromLocalStorage } from './todosLocalStorageWorker';
 
 class AddTodo extends Component {
   addTodoHandle(e){
@@ -161,7 +162,7 @@ class TodosContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: this.props.todosData,
       filter: 'ALL'
     };
 
@@ -181,6 +182,7 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
+    updateTodosInLocalStorage(data);
   }
 
   deleteTodo(index) {
@@ -196,6 +198,7 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter,
     });
+    updateTodosInLocalStorage(data);
   }
 
   changeFilter(filterName) {
@@ -203,6 +206,7 @@ class TodosContainer extends Component {
       data: this.state.data,
       filter: filterName
     });
+    updateTodosInLocalStorage(this.state.data);
   }
 
   changeStatus(todo) {
@@ -214,6 +218,7 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
+    updateTodosInLocalStorage(data);
   }
 
   closeCompleted() {
@@ -225,6 +230,7 @@ class TodosContainer extends Component {
       data: temp,
       filter: this.state.filter
     });
+    updateTodosInLocalStorage(this.state.data);
   }
 
   completeAll() {
@@ -240,6 +246,7 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
+    updateTodosInLocalStorage(data);
   }
 
   render () {
@@ -270,9 +277,11 @@ class TodosContainer extends Component {
 
 class App extends Component {
   render() {
+    var todosData = getTodosFromLocalStorage();
+    console.log(todosData);
     return (
       <div className='App'>
-        <TodosContainer />
+        <TodosContainer todosData={todosData}/>
       </div>
     );
   }
