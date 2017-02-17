@@ -1,29 +1,38 @@
-.toDoLogo {
+.todo-logo {
   text-align: center;
   font-size: 2rem;
-  color: #e38c25;
+  color: #ff5722;
 }
-.add_todo {
+.add-todo {
   margin: auto;
   margin-top: .2rem;
+  margin-bottom: .2rem;
   border: none;
   color: #777;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  font-size: 1.2em;
+}
+.add-todo-input {
+  margin: auto;
+  margin-bottom: .2rem;
+  border: none;
+  color: #757575;
   width: 80%;
   height: 3rem;
   text-align: center;
   font-size: 1.2em;
-  display: block;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
-.completeAllButton {
-  margin-top: .2rem;
+.complete-all-todos {
   border:none;
   background-color: #fff;
   float: left;
   width: 1.5rem;
   height: 3rem;
   font-size: 1.2em;
-  color: #999;
+  color: #eee;
   display: inline-block;
   border-right: solid;
   border-bottom: solid;
@@ -32,9 +41,11 @@
   border-color: #eee;
   outline: 0;
 }
-
-.customButton {
-  background-color: #c95921;
+.complete-all-todos:hover {
+  color: #757575;
+}
+.custom-button {
+  background-color: #ff5722;
   border: none;
   margin: 0.2rem;
   color: #ffffff;
@@ -49,8 +60,11 @@
   border-width: thin;
   outline: 0;
 }
-.closeCompletedButton {
-  background-color: #b53326;
+.custom-button:hover {
+  background-color: #e64a19;
+}
+.close-completed-button {
+  background-color: #f44336;
   border: none;
   margin: 0.2rem;
   color: #ffffff;
@@ -60,6 +74,10 @@
   display: inline-block;
   font-size: 1.2rem;
   outline: 0;
+}
+
+.close-completed-button:hover {
+  background-color: #d32f2f
 }
 .todos {
   border: none;
@@ -84,9 +102,9 @@
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
-.statusButton {
+.status-button {
   border:none;
-  background-color: #13b419;
+  background-color: #4caf50;
   float: left;
   width: 3rem;
   height: 3rem;
@@ -95,8 +113,10 @@
   font-size: 2rem;
   outline: 0;
 }
-
-.closeButton {
+.status-button:hover {
+  background-color: #388e3c;
+}
+.close-button {
   border:none;
   background-color: #fff;
   float: right;
@@ -107,15 +127,15 @@
   font-size: 2rem;
   outline: 0;
 }
-.closeButton:hover {
-  background-color: #b53326;
+.close-button:hover {
+  background-color: #f44336;
 }
-.todo_text {
+.todo-text {
   float: left;
   text-align: justify;
   overflow: hidden;
 }
-.todos_count {
+.todos-counter {
   border: none;
   float:left;
   margin: .2rem;

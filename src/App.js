@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
-import { filters } from './filters'
-import { buttons } from './buttons'
+import { filters } from './filters';
+import { buttons } from './buttons';
 
-class Add extends Component {
-  addToDo(e){
-    if (e.keyCode === 13) {
-      this.props.addToDo({
+class AddTodo extends Component {
+  addTodoHandle(e){
+    if (e.keyCode === 13 && this.refs.text.value !== '') {
+      this.props.addTodo({
+        id: this.props.data.length,
         isActive: true,
         text: this.refs.text.value
       });
       this.refs.text.value = '';
     }
   }
-  completeAllToDos(e){
+
+  completeAllTodosHandle(e){
     this.props.completeAll();
   }
+
   render(){
     return (
-      <div className="addToDo">
+      <div className='add-todo'>
         <button
-          className='completeAllButton'
-          onClick={this.completeAllToDos.bind(this)}
+          className='complete-all-todos'
+          onClick={this.completeAllTodosHandle.bind(this)}
         >˅
         </button>
-        <input
-          className='add_todo'
+        <input className='add-todo-input'
           placeholder='What needs to be done?'
           ref='text'
-          onKeyDown={this.addToDo.bind(this)}
+          onKeyDown={this.addTodoHandle.bind(this)}
         />
       </div>
     );
@@ -36,26 +38,25 @@ class Add extends Component {
 };
 
 class Todo extends Component {
-  deleteToDo(e){
-    this.props.deleteToDo(this.props.index);
+  deleteTodo(e){
+    this.props.deleteTodo(this.props.index);
   }
+
   changeStatus(e){
-    this.props.changeStatus(this.props.index, {
-      isActive: !this.props.data.isActive,
-      text: this.props.data.text
-    });
+    this.props.changeStatus(this.props.data);
   }
+
   render(){
     return (
-      <div className="todo">
+      <div className='todo'>
         <button
-          className='statusButton'
+          className='status-button'
           onClick={this.changeStatus.bind(this)}
         >{this.props.data.isActive ? '' : '✔'}</button>
-        <div className="todo_text">{this.props.data.text}</div>
+        <div className='todo-text'>{this.props.data.text}</div>
         <button
-          className='closeButton'
-          onClick={this.deleteToDo.bind(this)}
+          className='close-button'
+          onClick={this.deleteTodo.bind(this)}
         >×</button>
       </div>
     );
@@ -66,14 +67,15 @@ class Todos extends Component {
   render(){
     var data = filters[this.props.filter](this.props.data);
     var temp;
+
     if (data.length > 0) {
-      temp = data.map(function(item, index) {
+      temp = data.map(function(todo, index) {
         return (
           <div key={index}>
             <Todo
-              data={item}
+              data={todo}
               index={index}
-              deleteToDo={this.props.deleteToDo}
+              deleteTodo={this.props.deleteTodo}
               changeStatus={this.props.changeStatus}
             />
           </div>
@@ -84,7 +86,7 @@ class Todos extends Component {
     };
 
     return (
-      <div className="todos">
+      <div className='todos'>
         {temp}
       </div>
     );
@@ -93,12 +95,13 @@ class Todos extends Component {
 
 class TodosCount extends Component{
   render(){
-    var temp = this.props.data.filter(function(value) {
-      return value.isActive;
+    var temp = this.props.data.filter(function(todo) {
+      return todo.isActive;
     }, this).length;
+
     return (
-      <div className='todos_count'>
-        {temp} items left
+      <div className='todos-counter'>
+        {temp} todo{temp === 1 ? '' : 's'} left
       </div>
     );
   }
@@ -108,10 +111,11 @@ class CustomButton extends Component {
   changeFilter(e) {
     this.props.changeFilter(this.props.buttonFilter);
   }
+
   render(){
     return (
       <button
-        className='customButton'
+        className='custom-button'
         id={this.props.buttonId}
         onClick={this.changeFilter.bind(this)}
       >
@@ -125,25 +129,26 @@ class FilterPanel extends Component {
   closeCompleted(e) {
     this.props.closeCompleted();
   }
+
   render(){
     var buttons = this.props.buttons;
-    var temp = buttons.map(function (item, index) {
+    var temp = buttons.map(function (button, index) {
       return (
         <CustomButton
           key={index}
-          buttonId={item.name}
-          buttonText={item.text}
-          buttonFilter={item.filter}
+          buttonId={button.name}
+          buttonText={button.text}
+          buttonFilter={button.filter}
           changeFilter={this.props.changeFilter}
         />);
     }, this);
 
     return (
-      <div className='filterPanel'>
+      <div className='filter-panel'>
         <TodosCount data={this.props.data}/>
-        <div className='buttonPanel'>{temp}</div>
+        <div className='button-panel'>{temp}</div>
         <button
-          className='closeCompletedButton'
+          className='close-completed-button'
           onClick={this.closeCompleted.bind(this)}
         >Close Completed
         </button>
@@ -160,29 +165,36 @@ class TodosContainer extends Component {
       filter: 'ALL'
     };
 
-    this.addToDo = this.addToDo.bind(this);
-    this.deleteToDo = this.deleteToDo.bind(this);
+    this.addTodo = this.addTodo.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
     this.changeFilter = this.changeFilter.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
     this.closeCompleted = this.closeCompleted.bind(this);
     this.completeAll = this.completeAll.bind(this);
   }
 
-  addToDo(todo) {
+  addTodo(todo) {
     var data = this.state.data;
+
     data.push(todo);
     this.setState({
       data: data,
-      filter: 'ALL'
+      filter: this.state.filter
     });
   }
 
-  deleteToDo(index) {
+  deleteTodo(index) {
+    var temp = filters[this.state.filter](this.state.data)[index];
     var data = this.state.data;
-    data.splice(index, 1);
+
+    data.splice(temp.id, 1);
+    data.map(function(todo,index) {
+      todo.id = index;
+      return todo;
+    }, this);
     this.setState({
       data: data,
-      filter: 'ALL'
+      filter: this.state.filter,
     });
   }
 
@@ -193,9 +205,11 @@ class TodosContainer extends Component {
     });
   }
 
-  changeStatus(index, value) {
+  changeStatus(todo) {
     var data = this.state.data;
-    data[index] = value;
+
+    todo.isActive = !todo.isActive;
+    data[todo.Id] = todo;
     this.setState({
       data: data,
       filter: this.state.filter
@@ -203,9 +217,10 @@ class TodosContainer extends Component {
   }
 
   closeCompleted() {
-    var temp = this.state.data.filter(function(value) {
-      return value.isActive;
+    var temp = this.state.data.filter(function(todo) {
+      return todo.isActive;
     }, this);
+
     this.setState({
       data: temp,
       filter: this.state.filter
@@ -213,27 +228,33 @@ class TodosContainer extends Component {
   }
 
   completeAll() {
-    this.state.data.forEach(function(item, index) {
-      this.changeStatus(index, {
-        status: false,
-        text: item.text
-      });
+    var data = this.state.data;
+    var status = data.filter(function(todo) {
+      return todo.isActive
+    }, this).length === 0;
+
+    data.forEach(function (todo){
+      todo.isActive = status;
     }, this);
+    this.setState({
+      data: data,
+      filter: this.state.filter
+    });
   }
 
   render () {
     return (
-    <div className="TodosContainer">
-      <div className="toDoLogo">todos</div>
-      <Add
+    <div className='todos-container'>
+      <div className='todo-logo'>todos</div>
+      <AddTodo
         data={this.state.data}
-        addToDo={this.addToDo}
+        addTodo={this.addTodo}
         completeAll={this.completeAll}
       />
       <Todos
         data={this.state.data}
         filter={this.state.filter}
-        deleteToDo={this.deleteToDo}
+        deleteTodo={this.deleteTodo}
         changeStatus={this.changeStatus}
       />
       <FilterPanel
@@ -250,7 +271,7 @@ class TodosContainer extends Component {
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <TodosContainer />
       </div>
     );
