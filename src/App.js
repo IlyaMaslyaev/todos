@@ -206,7 +206,6 @@ class TodosContainer extends Component {
       data: this.state.data,
       filter: filterName
     });
-    updateTodosInLocalStorage(this.state.data);
   }
 
   changeStatus(todo) {
@@ -222,15 +221,15 @@ class TodosContainer extends Component {
   }
 
   closeCompleted() {
-    var temp = this.state.data.filter(function(todo) {
+    var data = this.state.data.filter(function(todo) {
       return todo.isActive;
     }, this);
 
     this.setState({
-      data: temp,
+      data: data,
       filter: this.state.filter
     });
-    updateTodosInLocalStorage(this.state.data);
+    updateTodosInLocalStorage(data);
   }
 
   completeAll() {

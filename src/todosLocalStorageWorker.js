@@ -4,6 +4,7 @@ function updateTodosInLocalStorage(data) {
 
 function getTodosFromLocalStorage() {
   var todosData;
+  
   if (localStorage.todosData === undefined) {
     todosData = [];
   } else {
