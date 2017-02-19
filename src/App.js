@@ -151,7 +151,7 @@ class FilterPanel extends Component {
         <button
           className='close-completed-button'
           onClick={this.closeCompleted.bind(this)}
-        >Close Completed
+        >Clear completed
         </button>
       </div>
     );
@@ -182,7 +182,6 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
-    updateTodosInLocalStorage(data);
   }
 
   deleteTodo(index) {
@@ -198,7 +197,6 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter,
     });
-    updateTodosInLocalStorage(data);
   }
 
   changeFilter(filterName) {
@@ -217,7 +215,6 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
-    updateTodosInLocalStorage(data);
   }
 
   closeCompleted() {
@@ -229,7 +226,6 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
-    updateTodosInLocalStorage(data);
   }
 
   completeAll() {
@@ -245,10 +241,10 @@ class TodosContainer extends Component {
       data: data,
       filter: this.state.filter
     });
-    updateTodosInLocalStorage(data);
   }
 
   render () {
+    updateTodosInLocalStorage(this.state.data);
     return (
     <div className='todos-container'>
       <div className='todo-logo'>todos</div>

@@ -1,3 +1,11 @@
+.App {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 60%;
+  min-width: 18rem;
+  margin: auto;
+  margin-top: 2rem;
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
 .todo-logo {
   text-align: center;
   font-size: 2rem;
@@ -5,152 +13,115 @@
 }
 .add-todo {
   margin: auto;
-  margin-top: .2rem;
-  margin-bottom: .2rem;
   border: none;
   color: #777;
-  width: 100%;
-  height: 3rem;
-  text-align: center;
-  font-size: 1.2em;
-}
-.add-todo-input {
-  margin: auto;
-  margin-bottom: .2rem;
-  border: none;
-  color: #757575;
-  width: 80%;
+  width: 90%;
   height: 3rem;
   text-align: center;
   font-size: 1.2em;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
+.add-todo-input {
+  border: none;
+  color: #757575;
+  width: 90%;
+  height: 95%;
+  text-align: center;
+  font-size: 1em;
+}
 .complete-all-todos {
-  border:none;
+  margin: auto;
   background-color: #fff;
-  float: left;
-  width: 1.5rem;
+  width: 10%;
   height: 3rem;
   font-size: 1.2em;
   color: #eee;
-  display: inline-block;
-  border-right: solid;
-  border-bottom: solid;
-  border-top: solid;
-  border-width: thin;
-  border-color: #eee;
+  border: none;
   outline: 0;
 }
 .complete-all-todos:hover {
   color: #757575;
 }
-.custom-button {
-  background-color: #ff5722;
+
+.todos-counter {
   border: none;
-  margin: 0.2rem;
-  color: #ffffff;
-  width: 8rem;
-  height: 3rem;
-  text-align: center;
-  display: inline-block;
-  font-size: 1.2rem;
-  float: left;
-  border-color: #eee;
-  border: solid;
-  border-width: thin;
-  outline: 0;
-}
-.custom-button:hover {
-  background-color: #e64a19;
-}
-.close-completed-button {
-  background-color: #f44336;
-  border: none;
-  margin: 0.2rem;
-  color: #ffffff;
-  width: 8rem;
-  height: 3rem;
-  text-align: center;
-  display: inline-block;
-  font-size: 1.2rem;
-  outline: 0;
+  width: 100%;
+  height: 2rem;
+  text-align: left;
 }
 
-.close-completed-button:hover {
-  background-color: #d32f2f
+.filter-panel {
+  margin-top: .2rem;
+  margin-left: 5%;
 }
+
 .todos {
   border: none;
-  margin: auto;
   color: #2e2e2e;
-  width: 100%;
+  width: 90%;
+  margin-top: 1rem;
+  margin-left: 5%;
   text-align: center;
-  display: inline-block;
-  font-size: 1rem;
   height: auto;
 }
 
 .todo {
   overflow: auto;
-  border: none;
-  background-color: #ffffff;
-  margin: auto;
   margin-top: .2rem;
-  width: 90%;
   height: auto;
-  font-size: 1em;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
-.status-button {
-  border:none;
-  background-color: #4caf50;
-  float: left;
-  width: 3rem;
-  height: 3rem;
-  font-size: 1em;
-  color: #fff;
-  font-size: 2rem;
-  outline: 0;
-}
-.status-button:hover {
-  background-color: #388e3c;
-}
-.close-button {
-  border:none;
-  background-color: #fff;
-  float: right;
-  width: 3rem;
-  height: 3rem;
-  font-size: 1em;
-  color: #ffffff;
-  font-size: 2rem;
-  outline: 0;
-}
-.close-button:hover {
-  background-color: #f44336;
-}
 .todo-text {
-  float: left;
-  text-align: justify;
-  overflow: hidden;
-}
-.todos-counter {
-  border: none;
+  display: block;
   float:left;
-  margin: .2rem;
-  width: 15rem;
-  height: 5vh;
-  text-align: center;
+}
+.close-completed-button, .custom-button, .status-button, .close-button {
+  color: #ffffff;
+  border: none;
+  margin: 0.1rem;
   display: inline-block;
-  font-size: 1.2em;
+  opacity: .9;
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
+.custom-button, .todos-counter {
+  float: left;
+}
+.close-completed-button, .custom-button {
+  width: 8rem;
+  height: 2rem;
+  outline: 0;
 }
 
-.App {
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  width: 50%;
-  min-width: 18rem;
-  margin-left: 25%;
-  margin-top: 5vh;
-  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+.custom-button {
+  background-color: #ff5722;
+}
+
+.close-completed-button {
+  background-color: #f44336;
+}
+.status-button, .close-button {
+  margin: auto;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2em;
+  outline: 0;
+}
+
+.status-button {
+  float: left;
+  background-color: #4caf50;
+}
+
+.close-button {
+  float: right;
+  background-color: #ffffff;
+}
+
+.close-completed-button:hover, .custom-button:hover, .status-button:hover, .close-button:hover {
+  opacity: 1;
+}
+
+.close-button:hover {
+  background-color: #f44336
 }
