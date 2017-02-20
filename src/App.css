@@ -22,12 +22,15 @@
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 .add-todo-input {
+  float: right;
   border: none;
   color: #757575;
-  width: 90%;
-  height: 95%;
+  width: 80%;
+  height: 90%;
   text-align: center;
+  margin-right: 10%;
   font-size: 1em;
+  outline: 0;
 }
 .complete-all-todos {
   margin: auto;
@@ -73,8 +76,12 @@
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 .todo-text {
-  display: block;
-  float:left;
+  margin: auto;
+  margin-left: 1rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  margin-right: 1rem;
+  float: left;
 }
 .close-completed-button, .custom-button, .status-button, .close-button {
   color: #ffffff;
